@@ -1,0 +1,42 @@
+# IDE and editor
+.claude
+.vscode
+
+# Datasets
+datasets/
+mySEMdata_repeat/
+
+# Training results
+results/
+results_cli/
+results_standalone/
+ablation_studies/multi_layer_loss/results
+
+# Pre-trained models and weights
+pre_trained/efficientad_pretrained_weights/
+pre_trained/*.pth
+pre_trained/*.pt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment
+.env
+.venv
+env/
+venv/
+
+# Project specific
+CLAUDE.md

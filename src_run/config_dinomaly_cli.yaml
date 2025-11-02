@@ -1,0 +1,24 @@
+model:
+  class_path: anomalib.models.Dinomaly
+  init_args:
+    encoder_name: dinov2reg_vit_base_14
+    bottleneck_dropout: 0.2
+    decoder_depth: 8
+
+data:
+  class_path: anomalib.data.Folder
+  init_args:
+    name: VirtualSEM
+    root: ./datasets/VirtualSEM/repeating
+    normal_dir: train/good
+    abnormal_dir: test/bad
+    normal_test_dir: test/good
+    train_batch_size: 16
+    eval_batch_size: 16
+
+trainer:
+  accelerator: gpu
+  max_steps: 5000
+  gradient_clip_val: 0.1
+  num_sanity_val_steps: 0
+  default_root_dir: results/VirtualSEM_dinomaly

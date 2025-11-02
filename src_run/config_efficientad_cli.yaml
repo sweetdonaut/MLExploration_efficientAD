@@ -1,0 +1,23 @@
+model:
+  class_path: anomalib.models.EfficientAd
+  init_args:
+    teacher_out_channels: 384
+    model_size: medium
+    lr: 0.0001
+    imagenet_dir: ./datasets/imagenette
+
+data:
+  class_path: anomalib.data.Folder
+  init_args:
+    name: VirtualSEM_v3
+    root: ./datasets/VirtualSEM_v3/repeating
+    normal_dir: train/good
+    abnormal_dir: test/bad
+    normal_test_dir: test/good
+    train_batch_size: 1
+    eval_batch_size: 1
+
+trainer:
+  accelerator: gpu
+  max_epochs: 70
+  default_root_dir: results/VirtualSEM_v3

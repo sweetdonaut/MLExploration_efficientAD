@@ -1,0 +1,25 @@
+model:
+  class_path: anomalib.models.ReverseDistillation
+  init_args:
+    backbone: wide_resnet50_2
+    layers: ["layer1", "layer2", "layer3"]
+    anomaly_map_mode: ADD
+    pre_trained: true
+
+data:
+  class_path: anomalib.data.Folder
+  init_args:
+    name: VirtualSEM
+    root: ./datasets/VirtualSEM/repeating
+    normal_dir: train/good
+    abnormal_dir: test/bad
+    normal_test_dir: test/good
+    train_batch_size: 8
+    eval_batch_size: 8
+
+trainer:
+  accelerator: gpu
+  max_epochs: 200
+  gradient_clip_val: 0
+  num_sanity_val_steps: 0
+  default_root_dir: results/VirtualSEM_reverse_distillation

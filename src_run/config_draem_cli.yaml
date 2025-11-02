@@ -1,0 +1,21 @@
+model:
+  class_path: anomalib.models.Draem
+  init_args:
+    enable_sspcab: True
+    beta: [0.1, 1.0]
+
+data:
+  class_path: anomalib.data.Folder
+  init_args:
+    name: VirtualSEM_v2
+    root: ./datasets/VirtualSEM_v2/repeating
+    normal_dir: train/good
+    abnormal_dir: test/bad
+    normal_test_dir: test/good
+    train_batch_size: 8
+    eval_batch_size: 8
+
+trainer:
+  accelerator: gpu
+  max_epochs: 100
+  default_root_dir: results/VirtualSEM_v2_draem

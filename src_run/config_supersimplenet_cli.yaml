@@ -1,0 +1,26 @@
+model:
+  class_path: anomalib.models.Supersimplenet
+  init_args:
+    perlin_threshold: 0.2
+    backbone: wide_resnet50_2.tv_in1k
+    layers: ["layer2", "layer3"]
+    supervised: false
+
+data:
+  class_path: anomalib.data.Folder
+  init_args:
+    name: VirtualSEM_v3
+    root: ./datasets/VirtualSEM_v3/repeating
+    normal_dir: train/good
+    abnormal_dir: test/bad
+    normal_test_dir: test/good
+    mask_dir: null
+    train_batch_size: 32
+    eval_batch_size: 32
+
+trainer:
+  accelerator: gpu
+  max_epochs: 300
+  gradient_clip_val: 0
+  num_sanity_val_steps: 0
+  default_root_dir: results/VirtualSEM_v3_supersimplenet
